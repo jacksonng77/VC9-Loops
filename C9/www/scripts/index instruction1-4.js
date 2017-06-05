@@ -17,6 +17,6 @@ function adder() {
         total = total + i;
     }
 
-    $("#result").html("Total from " + from + " to " + to + " = " + total);
+    alert(total);
 }
 })();
