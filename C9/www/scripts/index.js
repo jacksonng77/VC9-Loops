@@ -1,22 +1,34 @@
 ﻿(function () {
 
     $(document).ready(function () {
-        $("#btnAdd").bind("click", function () {
-            adder();
+        $("#btnFind").bind("click", function () {
+            div();
         });
     });
 
-function adder() {
-    var from, to, total;
+    function div() {
+        var from, to, divisible, htmlString, found, i;
+        from = parseInt($("#txtFrom").val());
+        to = parseInt($("#txtTo").val());
+        divisible = parseInt($("#txtDivisible").val());
+        htmlString = "";
+        i = from;
+        found = false;
+        while ((!found) && (i <= to)) {
+            if (i % divisible == 0) {
+                found = true;
+            }
+            else {
+                i++;
+            }
+        }
 
-    total = 0;
-    from = parseInt($("#txtFrom").val());
-    to = parseInt($("#txtTo").val());
-
-    for (i = from; i <= to; i++) {
-        total = total + i;
+        if (found) {
+            $("#result").html("First number divisible by " + divisible + " found:" + i);
+        }
+        else {
+            $("#result").html("Not Found");
+        }
     }
 
-    $("#result").html("Total from " + from + " to " + to + " = " + total);
-}
 })();
